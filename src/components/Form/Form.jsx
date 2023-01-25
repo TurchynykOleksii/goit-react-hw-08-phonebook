@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/operations';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/contacts/selectors';
 import css from './Form.module.css';
 import { PropTypes } from 'prop-types';
 

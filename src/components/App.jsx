@@ -1,22 +1,53 @@
-import { Form } from './Form';
-import { ContactList } from './ContactList';
-import { Loader } from './Loader';
-import { useSelector } from 'react-redux';
-import { Filter } from './Filter';
+import { useEffect, lazy } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RetrictedRoute';
+import { refreshUser } from 'redux/auth/operations';
+import { useAuth } from '../hooks/useAuth';
+
+const HomePage = lazy(() => import('../pages/Home'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login'));
+const Contacts = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
-  const { isLoading, error } = useSelector(state => state.contacts);
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
 
-  return (
-    <div className="app">
-      <h1>Phonebook</h1>
-      <Form />
-      <h2>Contacts</h2>
-      <Filter />
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
-      <ContactList />
-      {isLoading && <Loader />}
-      {error && <h2>Error: {error}</h2>}
-    </div>
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<Contacts />} />
+          }
+        />
+      </Route>
+    </Routes>
   );
 };

@@ -1,9 +1,9 @@
 import css from '../Form/Form.module.css';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeFilter } from '../../redux/filterSlice';
+import { changeFilter } from '../../redux/contacts/filterSlice';
 import { PropTypes } from 'prop-types';
-import { selectFilter } from 'redux/selectors';
+import { selectFilter } from 'redux/contacts/selectors';
 
 export const Filter = () => {
   const dispatch = useDispatch();

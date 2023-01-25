@@ -2,7 +2,7 @@ import css from './ContactList.module.css';
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/operations';
+import { deleteContact } from '../../redux/contacts/operations';
 
 export const ContactList = () => {
   const dispatch = useDispatch();

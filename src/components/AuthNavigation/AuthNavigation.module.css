@@ -1,0 +1,14 @@
+.link {
+  display: flex;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.auth {
+  display: flex;
+  gap: 25px;
+}
