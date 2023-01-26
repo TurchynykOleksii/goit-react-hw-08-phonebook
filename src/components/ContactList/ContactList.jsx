@@ -17,7 +17,7 @@ export const ContactList = () => {
   };
 
   return (
-    <>
+    <div>
       {contacts.length > 0 && (
         <ul className={css.list}>
           {contacts.map(({ id, name, number }) => {
@@ -38,7 +38,7 @@ export const ContactList = () => {
           })}
         </ul>
       )}
-    </>
+    </div>
   );
 };
 

@@ -16,7 +16,7 @@ const Contacts = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="contacts">
       <div>
         <h1>Phonebook</h1>
         <Form />
@@ -32,7 +32,7 @@ const Contacts = () => {
           <p>You dont have any contacts yet</p>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -41,3 +41,10 @@ body {
     -6px -6px 10px rgba(255, 255, 255, 0.5),
     6px 6px 8px rgba(255, 255, 255, 0.075), 6px 6px 10px rgba(0, 0, 0, 0.15);
 }
+
+.contacts {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
